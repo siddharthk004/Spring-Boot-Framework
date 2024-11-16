@@ -3,6 +3,7 @@ package com.practice.thymeleafpractical.controller;
 // import java.util.Date;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -47,5 +48,25 @@ public class MyController {
         List<Integer> list = List.of(23,34,25,563,345,654,23);
         model.addAttribute("myList", list);
         return "condition";
+    }
+
+    // handler for including fragments
+    @GetMapping("/service")
+    public String ServicesHandler(Model model) {
+        model.addAttribute("title", "I like to Eat Samosa");
+        model.addAttribute("subtitle", LocalDateTime.now().toString());
+        return "service";
+    }
+
+    // for new about
+    @GetMapping("/newabout")
+    public String newAbout(){
+        return "aboutnew";
+    }
+    
+    // for new contact
+    @GetMapping("/contact")
+    public String contact(){
+        return "contact";
     }
 }
