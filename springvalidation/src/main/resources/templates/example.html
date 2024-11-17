@@ -3,11 +3,18 @@
     <head>
         <meta charset="utf-8">
         <title>Example</title>
+
+        <link rel="stylesheet" th:href="@{/css/myStyle.css}" />
     </head>
     <body>
         <div class="container">
-            <h1>Adding Css , JAvascript and image in thymeleaf</h1>
-            <p>fwe gewgwe gew gvwe gveq gFwhfMWhPpRWRToxybWtnkWeV0jcT1r8D4gIGAKkj75S3kGV3kXzM67fRrZZQLHR</p>  
+        <img th:src="@{images/image.jpg}" alt=""/>
+            <h1>Adding Css , Javascript and Image in thymeleaf</h1>
+            <p>fwe gewgwe gew gvwe gveq gFwhf MWh PpRW R Tox yb
+                Wtn kWeV 0jcT1r8D4 gIGAKk j75S3kGV 3kXzM67fR rZZQLHR</p>  
         </div> 
+
+        <script th:src="@{/js/myJs.js}"></script>
+
     </body>
 </html>
