@@ -32,12 +32,6 @@ public class FileUploadController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Request must contain file .. !");
         }
 
-        if(!file.getContentType().equals("image/jpeg")) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Only JPEG Content Type are Allowed .. !");
-        }
-
-        // file upload code
-        
         boolean f = fileuploadhelper.uploadFile(file);
         if(f) {
             // return ResponseEntity.ok("Uploaded file is successfully uploaded");
