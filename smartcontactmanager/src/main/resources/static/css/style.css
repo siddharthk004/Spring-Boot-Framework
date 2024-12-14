@@ -1,0 +1,44 @@
+body {
+    background: #e2e2e2;
+}
+
+.bg-primary {
+    background: #009688 !important;
+}
+
+.banner {
+    width: 100%;
+    height: 93vh;
+    background: linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.8)) ,url(../image/01.jpg);
+    color: white;
+    background-size: cover;
+    
+}
+
+.bg-primary1 {
+    height: 60%;
+    width: 27%;
+    color: white;
+}
+
+.form-text{
+    color: rgb(255, 255, 255);
+}
+
+.secn {
+    background: rgb(232, 227, 227);
+    width: 100%;
+}
+
+.container {
+    align-items: center;
+    max-width: 700px; /* Increased the width of the container */
+    width: 100%;
+    padding: 20px; /* Adds some padding for better spacing */
+    border-radius: 8px; /* Optional: Rounded corners */
+    margin-left: 35%;
+}
+
+form {
+    font-size: 1.2rem;
+}

@@ -37,6 +37,13 @@ public class user {
     private List<contact> contacts = new ArrayList<>();
 
      
+    @Override
+    public String toString() {
+        return "user [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", roll=" + roll
+                + ", enabled=" + enabled + ", imageURL=" + imageURL + ", about=" + about + ", contacts=" + contacts
+                + "]";
+    }
+
     public user() {
         super();
     }

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th:"http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
+    <head>
+        <meta charset="utf-8">
+        <title>This is Login Page</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <section class="banner d-flex justify-content-center align-items-center ">
+            <div class="bg-primary1">
+                <div class="row" style="display: flex; justify-content: center; align-items: center; height: 100px;">
+                    <h1 style="margin: 0; text-align: center;">Signin</h1>
+                </div>                
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Name</label>
+                <input  class="form-control" id="exampleFormControlInput1" placeholder="Enter Your Name Here">
+              </div>
+              <label for="inputPassword5" class="form-label">Password</label>
+                <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" placeholder="Enter Your Password Here">
+
+                <div class="row" style="display: flex; justify-content: center; align-items: center; height: 100px;">
+                    <button type="button" class="btn btn-primary" style="width: auto; padding: 10px 20px; font-size: 16px;">Login</button>
+                </div>  
+
+            </div>
+          </div>
+        </section>
+    </body>
+</html>
