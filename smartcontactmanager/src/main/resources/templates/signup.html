@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th:"http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
     <head>
         <meta charset="utf-8">
         <title>This is Signup Page</title>
@@ -10,8 +10,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-9 offset-md-2">
-                       <div class="my-card mt-1 ">  
-                        
+                       <div class="my-card mt-1 ">                                             
                         <h1 class="text-center">Register Here !!</h1>
                         <br>
                             <form action="" th:action="@{/do_register}" method="post" th:object="${user}">
@@ -63,13 +62,13 @@
                                 <br>
 
                                 <!-- user about field -->
-                                <div class="form-group" >
-                                    <textarea 
+                                <textarea 
                                     placeholder="Enter something about yourself" 
                                     rows="10" 
-                                    th:value="${user.name}"
-                                    class="form-control" ></textarea>
-                                </div>
+                                    th:text="${user.about}" 
+                                    class="form-control">
+                                </textarea>
+
                                 <!-- Terms and condition agreement-->
                                 <div class="form-group from-check">
                                     <input type="checkbox"
@@ -79,7 +78,6 @@
 
                                     <label for="agreement">Accept Terms and Conditions</label>
                                 </div>
-                                <br>
                                 <!-- user submit reset buttons -->
                                 <div class="container1 text-center"> 
                                     <button type="submit" class="btn btn-primary text-white">

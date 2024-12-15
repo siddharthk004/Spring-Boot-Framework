@@ -16,6 +16,10 @@ import com.smart.smartcontactmanager.dao.userRepo;
 // import com.smart.smartcontactmanager.dao.userRepo;
 // import com.smart.smartcontactmanager.entities.contact;
 import com.smart.smartcontactmanager.entities.user;
+import com.smart.smartcontactmanager.helper.message;
+
+import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 
 
 @Controller
@@ -49,21 +53,34 @@ public class homeController {
 
     // this handler for registering user 
     @RequestMapping(value="/do_register",method=RequestMethod.POST)
-    public String registerUser(@ModelAttribute("user") user user,@RequestParam(value = "agreement",defaultValue = "false") boolean agreement,Model model)
+    public String registerUser(@Valid @ModelAttribute("user") user user,@RequestParam(value = "agreement",defaultValue = "false") boolean agreement,Model model,HttpSession session)
     {
-        if(!agreement){
-            System.out.println("You have not agrred to terms and conditions");
-        }
-        user.setRoll("Role_User");
-        user.setEnabled(true);
-        System.out.println("Agrrement : "+agreement);
-        System.out.println("User : "+user);
+        try 
+        {     
+            if(!agreement){
+                System.out.println("You have not agrred to terms and conditions");
+                throw new Exception("You have not agrred to terms and conditions");
+            }
 
-        user result = this.userRepo.save(user);
-        System.out.println("result : "+result);
-        
-        model.addAttribute("user",user);
-        return "signup";
+            user.setRoll("Role_User");
+            user.setEnabled(true);
+            user.setImageURL("Default.png");
+            System.out.println("Agrrement : "+agreement);
+            System.out.println("User : "+user);
+
+            this.userRepo.save(user);        
+
+            model.addAttribute("user",new user());
+            session.setAttribute("message",new message("Successfully Registered","alert-success"));
+            return "signup";
+        }
+        catch(Exception e) 
+        {
+            e.printStackTrace();
+            model.addAttribute("user", user);
+            session.setAttribute("message",new message("Something Went Wrong"+e.getMessage(),"alert-danger"));
+            return "signup";
+        }
     }
 
     @RequestMapping("/login")    

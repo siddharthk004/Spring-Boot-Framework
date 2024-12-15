@@ -5,6 +5,18 @@ body {
 .bg-primary {
     background: #009688 !important;
 }
+.navbar-brand {
+    color: black !important;
+    font-weight: bold;
+}
+
+.nav-link {
+    color: black !important;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
 
 .banner {
     width: 100%;
