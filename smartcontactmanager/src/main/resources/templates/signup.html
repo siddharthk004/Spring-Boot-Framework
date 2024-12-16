@@ -7,13 +7,19 @@
     </head>
     <body>
         <section class="secn">
+            <div class="video-container">
+                <video autoplay muted loop playsinline>
+                  <source src="../image/vid.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
             <div class="container">
                 <div class="row">
-                    <div class="col-md-9 offset-md-2">
+                    <div class="hello col-md-9 offset-md-2">
                        <div class="my-card mt-1 ">                                             
                         <h1 class="text-center">Register Here !!</h1>
                         <br>
-                            <form action="" th:action="@{/do_register}" method="post" th:object="${user}">
+                            <form novalidate action="#" th:action="@{/do_register}" method="post" th:object="${user}">
 
                                 <!-- Name field -->
                                 <div class="form-group">
@@ -21,13 +27,14 @@
                                     <input  
                                     name="name"
                                     type="text"
-                                    class="form-control" 
+                                    class="form-control"
+                                    th:classappend="${#fields.hasErrors('name') ? 'is-invalid':''}"
                                     id="exampleFormControlInput1"
-                                    aria-describedby="emailHelp" 
                                     placeholder="Enter Your Name Here" 
-                                    required 
                                     th:value="${user.name}"
                                     />
+                                    <div class="invalid-feedback" th:each="e : ${#fields.errors('name')}" th:text="${errors}">
+                                    </div>
                                 </div>
                                 
                                 <!-- Email field -->
@@ -59,22 +66,24 @@
                                     th:value="${user.password}"
                                     />
                                 </div>
-                                <br>
 
-                                <!-- user about field -->
+                            <!-- user about field -->
+                            <div class="form-group">
                                 <textarea 
                                     placeholder="Enter something about yourself" 
                                     rows="10" 
-                                    th:text="${user.about}" 
+                                    th:text="*{about}" 
+                                    name="about"
                                     class="form-control">
                                 </textarea>
+                            </div>
 
                                 <!-- Terms and condition agreement-->
                                 <div class="form-group from-check">
                                     <input type="checkbox"
                                     name="agreement"
                                     class="form-check-input"
-                                    id="agreement" />
+                                    id="agreement" required />
 
                                     <label for="agreement">Accept Terms and Conditions</label>
                                 </div>
@@ -87,7 +96,7 @@
                                         Reset
                                     </button>
                                 </div>
-
+                                <br>
                             </form>
                         </div>
                     </div>
@@ -96,3 +105,5 @@
         </section>
     </body>
 </html>
+
+
