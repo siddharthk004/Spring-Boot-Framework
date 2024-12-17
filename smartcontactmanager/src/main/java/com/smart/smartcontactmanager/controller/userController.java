@@ -30,6 +30,6 @@ public class userController {
     } catch (Exception e) {
         e.printStackTrace();
         return "error"; // Redirect to an error page or message
-    }
+    } 
   }
 }
