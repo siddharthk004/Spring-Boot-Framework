@@ -22,6 +22,7 @@ public class user {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+
     @NotBlank(message = "Name Field is Required !!")
     @Size(min = 2,max = 20,message = "Min 2 and Max 20 Characters are Allowed !!")
     private String name;

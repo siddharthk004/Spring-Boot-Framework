@@ -43,7 +43,7 @@ public class myConfig {
                 .requestMatchers("/user/**").hasRole("USER")
                 .requestMatchers("/**").permitAll()
             .and().formLogin().loginPage("/signin")
-            .loginProcessingUrl("/user/index")
+            .loginProcessingUrl("/dologin")
             .defaultSuccessUrl("/user/index")
             .and().csrf().disable();
         return http.build();

@@ -1,7 +1,10 @@
+
+
 body {
     background: #e2e2e2;
 }
 
+/* base html page */
 .bg-primary {
     background: #009688 !important;
 }
@@ -18,6 +21,7 @@ body {
     text-decoration: underline;
 }
 
+/* home html page  */
 .banner {
     width: 100%;
     height: 93vh;
@@ -36,6 +40,7 @@ body {
 .form-text{
     color: rgb(255, 255, 255);
 }
+
 /* Video Container */
 .video-container {
     position: fixed;
@@ -54,10 +59,12 @@ body {
   }
   
 
+/* signup html page */
 .secn {
     width: 100%;
     padding-left: 150px;
 }
+
 
 .row {
     border: 1px solid rgb(255, 255, 255);
@@ -74,6 +81,8 @@ body {
     border-radius: 8px; /* Optional: Rounded corners */
     margin-left: 25%;
 }
+
+/* login html page */
 .row1 {
     padding-left: 180px;
 }
@@ -95,4 +104,63 @@ form {
   }
   #login .container #login-row #login-column #login-box #login-form #register-link {
     margin-top: -85px;
+  }
+
+
+  /* small screen */
+@media only screen and(max-width:600px) {
+
+/* Side Bar Style */
+.sidebar {
+    display: none;
+    width: 80% !important;
+    background: white;
+    height: 100vh;
+    position: fixed;
+    padding-top: 20px;
+  }
+  .content {
+    margin-left: 0% !important;
+  }
+}
+
+/* Side Bar Style */
+  .sidebar {
+    width: 14%;
+    background-color: white;
+    height: 100vh;
+    position: fixed;
+    padding-top: 44px;
+    padding-inline: 3px;
+  }
+
+  .sidebar a{
+    display: block;
+    width: 100%;
+    padding: 16px 35px;
+    text-decoration: none;
+    color: rgb(90, 93, 92);
+  }
+
+  .sidebar a:hover {
+    color: black;
+    background-color: rgb(155, 234, 214);
+    
+  }
+
+  .sidebar .divider {
+    height: .9px;
+    width: 100%;
+    background: #e2e2e2;
+    margin-top: 20px;
+  }
+
+  .content {
+    margin-top: 13px;
+    margin-left: 15.5%;
+  }
+
+  .row {
+    background-color: white;
+    color: black;
   }
