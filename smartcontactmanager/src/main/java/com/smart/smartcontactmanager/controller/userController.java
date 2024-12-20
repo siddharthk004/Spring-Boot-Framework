@@ -1,6 +1,8 @@
 package com.smart.smartcontactmanager.controller;
 
 import java.security.Principal;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.smart.smartcontactmanager.dao.contactRepo;
 import com.smart.smartcontactmanager.dao.userRepo;
 import com.smart.smartcontactmanager.entities.contact;
 import com.smart.smartcontactmanager.entities.user;
@@ -23,6 +26,9 @@ public class userController {
 
     @Autowired
     private userRepo userRepo;
+
+    @Autowired
+    private contactRepo contactRepo;
 
     // method for adding common data to response
     @ModelAttribute
@@ -83,6 +89,19 @@ public class userController {
             session.setAttribute("message",new message("Something Went Wrong !! Try Again","danger"));
         }
         return "normal/add_contact_form";
+    }
+
+    //show contact handler
+    @RequestMapping("/show-contacts")
+    public String showContacts(Model model,HttpSession session,Principal principal) {
+        model.addAttribute("title", "Show User Contacts");
+        String userName = principal.getName();
+        user user = this.userRepo.getUserByUserName(userName);
+        List<contact> contacts =  this.contactRepo.findContactByUser(user.getId());
+        this.contactRepo.findContactByUser(principal);
+        
+        return "normal/show_contact";
+
     }
 
 }
