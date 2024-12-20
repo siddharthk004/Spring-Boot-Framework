@@ -1,5 +1,4 @@
 package com.smart.smartcontactmanager.entities;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,6 +21,9 @@ public class contact {
     private String nickName;
     private String phone;
     private String work;
+    private String email;
+    private String image;
+
 
     @ManyToOne
     private user user;
@@ -80,9 +82,11 @@ public class contact {
     public void setImage(String image) {
         this.image = image;
     }
-    private String email;
-    private String image;
 
-    
+    // @Override
+    // public String toString() {
+    //     return "contact [cId=" + cId + ", name=" + name + ", description=" + description + ", nickName=" + nickName
+    //             + ", phone=" + phone + ", work=" + work + ", email=" + email + ", image=" + image + ", user=" + user + "]";
+    // }
 
 }

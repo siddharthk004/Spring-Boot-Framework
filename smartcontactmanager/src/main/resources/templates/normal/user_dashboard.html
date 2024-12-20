@@ -8,7 +8,7 @@
         <section>
             <h1>Welcome You are The normal User</h1>
             <h1>This is Your Private Page</h1>
-            <h1>User name: <span th:text="${user.name}"></span></h1>
+            <h1>User name: <span th:text="${user?.name}"></span></h1>
             <h1>User email: <span th:text="${user.email}"></span></h1>
         </section>
     </body>
