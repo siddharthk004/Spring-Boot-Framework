@@ -2,11 +2,54 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{normal/base::layout(~{::section})}">
     <head>
         <meta charset="utf-8">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        
         <title>User Dashboard</title>
     </head>
     <body>
         <section>
-            <h1>Welcome You are Show Contact page</h1>
+            <div class="card mr-3">
+                <div class= "card-body">   
+                    <h1 class = "text-center"><b>Your Contacts</b></h1>
+                    <br>
+                    <table class= "table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#Id</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">NickName</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr th:each="c : ${contacts}">
+                                <th scope="row" th:text="'SCMUSER'+${c.cId}">1</th>
+
+                                <td><span th:text="${c.name}"></span></td>
+                                
+                                <td th:text="${c.nickName}">Siddhu</td>
+
+                                <td>
+                                    <a href="#" th:href="@{'/user/'+${c.cId}+'/contact'}">
+                                        <span th:text="${c.email}">Siddharthkardile5@gmail.com</span>
+                                    </a>
+                                </td>
+                                <td th:text="${c.phone}">9552450050</td>
+                                <td>
+                                    <button class="btn btn-danger btn-sm">Delete</button>
+                                    <button class="btn btn-primary btn-sm">Update</button>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                
+                </div>
+            </div>
         </section>
     </body>
 </html>

@@ -2,12 +2,14 @@ package com.smart.smartcontactmanager.controller;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -97,11 +99,22 @@ public class userController {
         model.addAttribute("title", "Show User Contacts");
         String userName = principal.getName();
         user user = this.userRepo.getUserByUserName(userName);
-        List<contact> contacts =  this.contactRepo.findContactByUser(user.getId());
-        this.contactRepo.findContactByUser(principal);
-        
-        return "normal/show_contact";
 
+        List<contact> contacts =  this.contactRepo.findContactByUser(user.getId());
+        
+
+        model.addAttribute("contacts",contacts);
+        con
+        return "normal/show_contact";
     }
 
+    // showing specific contact detail
+
+    @RequestMapping("/{cId}/contact")
+    public String ShowContactDet(@PathVariable("cId") Integer cId) {
+        System.out.println(cId);
+        Optional<contact> contact = this.contactRepo.findById(cId);
+
+        return "normal/contact_detail";
+    }
 }

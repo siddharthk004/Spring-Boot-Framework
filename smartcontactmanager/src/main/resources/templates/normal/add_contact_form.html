@@ -7,85 +7,78 @@
     <body>
         <section>
             <div class="card">
-                <div class="card-body">
+            <div class="card-body">
                     <h1 class="text-center">Add Contact</h1>
 
-                    <div class="container-fluid mt-1">
-                    <div class="row">
-                        <div class="col-md-10 offset-md-1">
-                            <form action="#" th:object="${contact}" method="POST" th:action="@{/user/process-contact}" class="mt-2">
+                <div class="container-fluid mt-1">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <form action="#" th:object="${contact}" method="POST" th:action="@{/user/process-contact}" class="mt-2">
 
+                            <div class="input-group mt-4">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fas fa-user-alt"></i>
+                                    </div>
+                                </div>
+                                <input type="text" class="form-control" name="name" id="exampleFormControlInput1" placeholder="Enter Your Name">
+                            </div>
 
-                    <div class="input-group mt-4">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <i class="fas fa-user-alt"></i>
+                            <div class="input-group mt-4">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fa-regular fa-user"></i>
+                                    </div>
+                                </div>
+                                <input type="text" class="form-control" name="nickName" id="exampleFormControlInput1" placeholder="Enter Your Second Name">
                             </div>
-                        </div>
-                        <input type="text" class="form-control" name="name" id="exampleFormControlInput1" placeholder="Enter Your Name">
-                    </div>
 
-                    <div class="input-group mt-4">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <i class="fa-regular fa-user"></i>
+                            <div class="input-group mt-4">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fa-brands fa-android"></i>
+                                    </div>
+                                </div>
+                                <input type="text" class="form-control" name="work" id="exampleFormControlInput1" placeholder="Enter Your Work">
                             </div>
-                        </div>
-                        <input type="text" class="form-control" name="nickName" id="exampleFormControlInput1" placeholder="Enter Your Second Name">
-                    </div>
 
-                    <div class="input-group mt-4">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <i class="fa-brands fa-android"></i>
+                            <div class="input-group mt-4">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fa-regular fa-envelope"></i>
+                                    </div>
+                                </div>
+                                <input type="email" class="form-control" name="email" id="exampleFormControlInput1" placeholder="Enter Your Email Address">
                             </div>
-                        </div>
-                        <input type="text" class="form-control" name="work" id="exampleFormControlInput1" placeholder="Enter Your Work">
-                    </div>
-                    <div class="input-group mt-4">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <i class="fa-regular fa-envelope"></i>
+    
+                            <div class="input-group mt-4">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fa-solid fa-paperclip"></i>
+                                    </div>
+                                </div>
+                                <input class="form-control" name="image" type="text" id="formFile" placeholder="Enter image path or URL">
                             </div>
-                        </div>
-                        <input type="email" class="form-control" name="email" id="exampleFormControlInput1" placeholder="Enter Your Email Address">
-                    </div>
-                    <div class="input-group mt-4">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <i class="fa-solid fa-phone"></i>
-                            </div>
-                        </div>
-                        <input type="text" class="form-control" name="phone" id="exampleFormControlInput1" placeholder="Enter Your Phone Number">
-                    </div>
 
-                    <div class="input-group mt-4">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <i class="fa-solid fa-paperclip"></i>
+                            <div class="input-group mt-4">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fa-regular fa-indent"></i>
+                                    </div>
+                                </div>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" name="description" rows="4" placeholder="Enter Description here"></textarea>
                             </div>
-                        </div>
-                        <!-- Input field for a plain string (image path, name, or URL) -->
-                        <input class="form-control" name="image" type="text" id="formFile" placeholder="Enter image path or URL">
-                    </div>
-
-                    <div class="input-group mt-4">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <i class="fa-regular fa-indent"></i>
+                    
+                            <div class="container ml-4" text-center>
+                                <button class="btn btn-outline-primary">Save Contact</button>
                             </div>
-                        </div>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" name="description" rows="4" placeholder="Enter Description here"></textarea>
-                    </div>
-                    <div class="container ml-4" text-center>
-                        <button class="btn btn-outline-primary">Save Contact</button>
-                    </div>
-                </form>
+               
+                        </form>
                     </div>
                 </div>
                 </div>
             </div>
-        </div>
+            </div>
         </section>
     </body>
 </html>

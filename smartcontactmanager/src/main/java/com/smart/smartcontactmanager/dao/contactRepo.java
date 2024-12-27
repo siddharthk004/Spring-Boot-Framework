@@ -9,8 +9,7 @@ import org.springframework.data.repository.query.Param;
 import com.smart.smartcontactmanager.entities.contact;
 
 public interface contactRepo extends JpaRepository<contact, Integer> {
-    // pegination ...
-
-    @Query("from contact as d where c.user.id =:userId")
-    public List<contact> findContactByUser(@Param("userId")int userId);
+    
+    @Query("SELECT c FROM contact c where c.user.id = :userId")
+    public List<contact> findContactByUser(@Param("userId") int userId);
 }
