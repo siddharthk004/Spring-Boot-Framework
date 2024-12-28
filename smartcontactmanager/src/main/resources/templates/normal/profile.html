@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{normal/base::layout(~{::section})}">
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <meta charset="utf-8">
+        <title>User Dashboard</title>
+    </head>
+    <body>
+        <section>
+            <div class="container"> 
+            <div class="card">
+            <div class="card-body">
+                <img class="ml-5" src="#" th:src="@{../../image/contact.png}" alt="" width="270" height="270" />
+                <h2 class="text-success text-center"><span th:text="${user.name}"></span></h2>
+                <br>
+                <br>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Id</th>
+                            <td>
+                                <span th:text="${user.id}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Role</th>
+                            <td>
+                                <span th:text="${user.roll}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Email</th>
+                            <td>
+                                <span th:text="${user.email}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Image Source URL</th>
+                            <td>
+                                <span th:text="${user.imageURL}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">About</th>
+                            <td>
+                                <p>
+                                    <span th:text="${user.about}"></span>
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </div>
+            </div>
+        </section>
+    </body>
+</html>

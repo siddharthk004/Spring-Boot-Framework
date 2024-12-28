@@ -2,6 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{normal/base::layout(~{::section})}">
     <head>
         <meta charset="utf-8">
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha384-oWBZzlCMXkFZylIBNAiWqNpiJ8Ixu7v1z29LVlHlBIX9sqCIB7yPoWgtI1kxJQf5" crossorigin="anonymous"></script>
+        <script src="../../static/js/script.js"></script>
+        <!-- Load jQuery first -->
+        
+
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         
@@ -13,6 +18,13 @@
                 <div class= "card-body">   
                     <h1 class = "text-center"><b>Your Contacts</b></h1>
                     <br>
+                    <!-- Search -->
+                    <div class="search-container my-3">
+                        <input onKeyup="search()" id="search-input" type="text" class="form-control" placeholder="Search Your Contact" />
+                        <div class="search-result">
+                            <!-- Result Goes Here -->                            
+                        </div>
+                    </div>
                     <table class= "table">
                         <thead>
                             <tr>
@@ -40,8 +52,11 @@
                                 </td>
                                 <td th:text="${c.phone}">9552450050</td>
                                 <td>
-                                    <button class="btn btn-danger btn-sm">Delete</button>
-                                    <button class="btn btn-primary btn-sm">Update</button>
+                                    <a href="#" th:onclick="| DeleteContact(${c.cId}) |" class="btn btn-danger btn-sm">Delete</a>
+                                    <br>
+                                    <form method="post" th:action="@{'/user/update-contact/'+${c.cId}}" class="mt-2">
+                                        <button class="btn btn-primary btn-sm" type="submit">Update</button>
+                                    </form>
                                 </td>
                             </tr>
                         </tbody>

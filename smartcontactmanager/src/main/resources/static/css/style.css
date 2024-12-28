@@ -89,6 +89,9 @@ body {
 form {
     font-size: 1.2rem;
 }
+
+
+
   #login .container #login-row #login-column #login-box {
     margin-top: 120px;
     margin-right: 100px;
@@ -105,6 +108,13 @@ form {
   #login .container #login-row #login-column #login-box #login-form #register-link {
     margin-top: -85px;
   }
+
+.container .row {    
+  background-color: rgba(30, 30, 30, 0.701);
+  border: 1px solid rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
+
+}
 
 
   /* small screen */
@@ -163,4 +173,19 @@ form {
   .row {
     background-color: white;
     color: black;
+  }
+
+  /* search css */
+
+  .search-container {
+    position: relative;
+  }
+
+  .search-result {
+    position: absolute;
+    background: white;
+    border: grey 1px solid;
+    display: none;
+    width: 100%;
+    padding: 10px;
   }

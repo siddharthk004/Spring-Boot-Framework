@@ -1,12 +1,72 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{normal/base::layout(~{::section})}">
     <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <meta charset="utf-8">
-        <title>User Contact Detail</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <title>User Contact Detail</title>
     </head>
     <body>
         <section>
-            <h1>Show Contact Detail</h1>
+            <div class="card mr-3 ml-3">
+                <div class="card-body" th:if="${contact}">
+                    <div class="container">
+                            <img src="#" th:src="@{../../image/contact.png}" alt="" width="270" height="270" />
+                            <h3 class="text-success text-center"><span th:text="${contact.name}"></span> (<span th:text="${contact.nickName}"></span>)</h3>
+                            <br>
+                            <br>
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Id</th>
+                                        <td>
+                                            <span th:text="${contact.cId}"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Email</th>
+                                        <td>
+                                            <span th:text="${contact.email}"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Contact</th>
+                                        <td>
+                                            <span th:text="${contact.phone}"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Work</th>
+                                        <td>
+                                            <span th:text="${contact.work}"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Image Source</th>
+                                        <td>
+                                            <span th:text="${contact.image}"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Discription</th>
+                                        <td>
+                                            <p>
+                                                <span th:text="${contact.description}"></span>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="container">
+                                <a href="#" th:onclick="| DeleteContact(${contact.cId}) |" class="btn btn-danger btn-sm btn-block">Delete</a>
+                                    <form method="post" th:action="@{'/user/update-contact/'+${contact.cId}}" class="mt-2">
+                                        <button class="btn btn-primary btn-sm btn-block" type="submit">Update</button>
+                                    </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+            </div>
         </section>
     </body>
 </html>

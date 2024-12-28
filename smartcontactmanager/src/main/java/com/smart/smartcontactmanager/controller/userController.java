@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+// import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.smart.smartcontactmanager.dao.contactRepo;
 import com.smart.smartcontactmanager.dao.userRepo;
@@ -31,6 +32,7 @@ public class userController {
 
     @Autowired
     private contactRepo contactRepo;
+
 
     // method for adding common data to response
     @ModelAttribute
@@ -95,7 +97,8 @@ public class userController {
 
     //show contact handler
     @RequestMapping("/show-contacts")
-    public String showContacts(Model model,HttpSession session,Principal principal) {
+    public String showContacts(Model model,HttpSession session,Principal principal) 
+    {
         model.addAttribute("title", "Show User Contacts");
         String userName = principal.getName();
         user user = this.userRepo.getUserByUserName(userName);
@@ -104,17 +107,92 @@ public class userController {
         
 
         model.addAttribute("contacts",contacts);
-        con
+        
         return "normal/show_contact";
     }
 
     // showing specific contact detail
 
     @RequestMapping("/{cId}/contact")
-    public String ShowContactDet(@PathVariable("cId") Integer cId) {
+    public String ShowContactDet(@PathVariable("cId") Integer cId,Model Model,Principal principal) {
         System.out.println(cId);
-        Optional<contact> contact = this.contactRepo.findById(cId);
+        
+        Optional<contact> contactOptional = this.contactRepo.findById(cId);
+        contact contact = contactOptional.get();
 
+        //cheak for confirming
+        String username = principal.getName();
+        user user = this.userRepo.getUserByUserName(username);
+
+        if(user.getId() == contact.getUser().getId());
+            Model.addAttribute("contact",contact);
+        
         return "normal/contact_detail";
     }
+
+    //delete contact hanler
+    @GetMapping("/delete/{cId}")
+    public String deleteContact(@PathVariable("cId") Integer cId,Model model,Principal principal,HttpSession session) {
+        Optional<contact> contactOptional = this.contactRepo.findById(cId);
+        contact contact = contactOptional.get();
+
+        // cheak ... 
+        String username = principal.getName();
+        user user = this.userRepo.getUserByUserName(username);
+        if(user.getId() == contact.getUser().getId());
+            this.contactRepo.delete(contact);
+
+        session.setAttribute("message",new message("contact Deleted Successfully","success"));
+        return "redirect:/user/show-contacts";
+    }
+
+    // open update form Contact Handler
+    @PostMapping("/update-contact/{cId}")
+    public String updateContact(@PathVariable("cId") Integer cId,Model model) {
+        model.addAttribute("Title","Update Contact");
+        contact contact = this.contactRepo.findById(cId).get();
+        model.addAttribute("contact",contact);
+        return "normal/update_form";
+    }
+
+    //process update handler
+    // @RequestMapping(value="/process-update",method = RequestMethod.POST)
+    // public String updateContactHandler(@ModelAttribute contact contact,Model model,Principal principal,HttpSession session) {
+    //     try {
+    //         // contact oldContact = this.contactRepo.findById(contact.getcId()).get();
+                
+    //         user user = this.contactRepo.getUserByUserName(principal.getName());
+    //         contact.setUser(user);
+    //         this.contactRepo.save(contact);
+        
+    //         System.out.println("Contact "+contact.getName());
+    //         System.out.println("Contact ");
+    //         System.out.println("Contact "+contact.getcId());
+        
+    //     }
+    //     catch(Exception e)
+    //     {
+    //         e.printStackTrace();
+    //     }
+    //     return "redirect:/user/"+contact.getcId()+"/contact";
+    // }
+
+    // Your Profile handler 
+    @GetMapping("/profile")
+    public String showProfile(Model model) {
+        model.addAttribute("title", "Home Profile Page");
+        return "normal/profile";
+    }
+
+    //setting page
+    
+    //show contact handler
+    @RequestMapping("/setting")
+    public String showContacts() 
+    {
+        return "normal/setting";
+    }
+
+    
 }
+
